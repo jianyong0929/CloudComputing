@@ -40,25 +40,37 @@ document.addEventListener('DOMContentLoaded', function() {
     function renderTable(data) {
         // Assuming you have a table element with ID 'companyTable'
         var table = document.getElementById('companyTable');
-        
+    
         // Clear the existing table rows, excluding the header row
         var rowCount = table.rows.length;
         for (var i = rowCount - 1; i > 0; i--) {
             table.deleteRow(i);
         }
-
+    
         // Iterate over the updated data and add rows to the table
-        data.data.forEach(function(row) {
+        data.data.forEach(function (row) {
             var newRow = table.insertRow(-1);
-            
-            // Assuming 'row' has the same structure as in your original table
-            // You can add cells and data similar to how you did in your original HTML
-            var cell1 = newRow.insertCell(0);
-            var cell2 = newRow.insertCell(1);
-            // Add more cells and data as needed
+    
+            // Add cells and data for each column
+            var cell1 = newRow.insertCell(0); // Company ID
+            var cell2 = newRow.insertCell(1); // Company Name
+            var cell3 = newRow.insertCell(2); // Address
+            var cell4 = newRow.insertCell(3); // Contact No.
+            var cell5 = newRow.insertCell(4); // Email
+            var cell6 = newRow.insertCell(5); // Action
+    
+            // Set data in the cells
             cell1.innerHTML = row[0];
             cell2.innerHTML = row[1];
-            // Add more cells and data as needed
+            cell3.innerHTML = row[2];
+            cell4.innerHTML = row[3];
+            cell5.innerHTML = row[4];
+    
+            // Assuming you have buttons for each row similar to your HTML
+            cell6.innerHTML = '<div class="button-group-area mt-10">' +
+                '<button class="genric-btn success circle arrow">Approve</button>' +
+                '<button class="genric-btn success circle arrow reject" data-companyID="' + row[0] + '">Reject</button>' +
+                '</div>';
         });
     }
 });
