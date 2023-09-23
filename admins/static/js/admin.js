@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Send a POST request to the server to update the company status
             fetch('/update_company_status', {
-                method: 'PUT',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
