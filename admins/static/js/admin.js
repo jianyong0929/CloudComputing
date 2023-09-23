@@ -65,11 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
         cell4.innerHTML = row[3];
         cell5.innerHTML = row[4];
 
-        cell1.classList.add('table');
-        cell2.classList.add('table');
-        cell3.classList.add('table');
-        cell4.classList.add('table');
-        cell5.classList.add('table');
+        cell1.classList.add('table','td');
+        cell2.classList.add('table','td');
+        cell3.classList.add('table','td');
+        cell4.classList.add('table','td');
+        cell5.classList.add('table','td');
 
         // Assuming you have buttons for each row similar to your HTML
         cell6.innerHTML = '<div class="button-group-area mt-10">' +
