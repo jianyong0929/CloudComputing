@@ -52,24 +52,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Add cells and data for each column
         var cell1 = newRow.insertCell(0); // Company ID
+        cell1.classList.add('table', 'td'); // Add appropriate classes
         var cell2 = newRow.insertCell(1); // Company Name
+        cell2.classList.add('table', 'td'); // Add appropriate classes
         var cell3 = newRow.insertCell(2); // Address
+        cell3.classList.add('table', 'td'); // Add appropriate classes
         var cell4 = newRow.insertCell(3); // Contact No.
+        cell4.classList.add('table', 'td'); // Add appropriate classes
         var cell5 = newRow.insertCell(4); // Email
+        cell5.classList.add('table', 'td'); // Add appropriate classes
         var cell6 = newRow.insertCell(5); // Action
-
+        
         // Set data in the cells
         cell1.innerHTML = row[0];
         cell2.innerHTML = row[1];
         cell3.innerHTML = row[2];
         cell4.innerHTML = row[3];
         cell5.innerHTML = row[4];
-
-        cell1.classList.add('table','td');
-        cell2.classList.add('table','td');
-        cell3.classList.add('table','td');
-        cell4.classList.add('table','td');
-        cell5.classList.add('table','td');
 
         // Assuming you have buttons for each row similar to your HTML
         cell6.innerHTML = '<div class="button-group-area mt-10">' +
