@@ -328,8 +328,8 @@ def update_company_status(com_email):
         updated_data = cursor.fetchall()
         cursor.close()
 
-        # Return the updated data as JSON
-        return redirect(url_for('displayComInfo'))
+      
+        return redirect(url_for('viewCompanyInfo'))
 
     except Exception as e:
         # Handle exceptions here, log the error for debugging
