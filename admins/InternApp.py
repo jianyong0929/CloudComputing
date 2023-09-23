@@ -315,7 +315,6 @@ def delete_company(com_id):
 
 @app.route('/update_company_status/<com_email>', methods=['POST'])
 def update_company_status(com_email):
-    try:
         com_id = request.form.get('com_email')
         statement = "UPDATE company SET status = 1 WHERE com_email = %s;"
         cursor = db_conn.cursor()
@@ -331,10 +330,7 @@ def update_company_status(com_email):
       
         return redirect(url_for('viewCompanyInfo'))
 
-    except Exception as e:
-        # Handle exceptions here, log the error for debugging
-        print("Error in update_company_status:", str(e))
-        return jsonify(error="An error occurred while updating company status.")
+   
 
 
 if __name__ == '__main__':
