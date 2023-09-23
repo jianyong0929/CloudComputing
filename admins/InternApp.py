@@ -301,13 +301,14 @@ def delete_company():
     statement = "DELETE FROM company WHERE com_id = %s;"
     cursor = db_conn.cursor()
     cursor.execute(statement, (company_id,))
-    result = cursor.fetchall()
     db_conn.commit()
 
     cursor.execute('SELECT * FROM company')
     rows = cursor.fetchall()
     cursor.close()
     return render_template('admin.html', data=rows)
+
+
 
 
 if __name__ == '__main__':
