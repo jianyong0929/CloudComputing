@@ -1,5 +1,6 @@
+document.getElementById('Reject').onclick = function() {
+    console.log('Reject button clicked'); // Add this line for testing
 
-rejectButton.onclick = function() {
     // Send a POST request to the server to delete the company
     fetch('/delete_company', {
         method: 'POST',
