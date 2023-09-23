@@ -163,8 +163,8 @@
         				<td>{{ row[4] }}</td>
         				<td>
             					<div class="button-group-area mt-10">
-                					<form action="/update_company_status/{{ row[0] }}" method="POST">
-        						<input type="hidden" name="com_id" value="{{ row[0] }}">
+                					<form action="/update_company_status/{{ row[4] }}" method="POST">
+        						<input type="hidden" name="com_email" value="{{ row[4] }}">
         						<button type="submit" class="genric-btn success circle arrow">Approve</button>
     							</form>
                                               <a href="/delete_company{{ row[0] }}" 
