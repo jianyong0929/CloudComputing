@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Your code here
     document.querySelectorAll('.reject').forEach(function(button) {
         button.addEventListener('click', function(e) {
             e.preventDefault(); // Prevent the default form submission
-
+            
             // Retrieve the 'company_id' from the data attribute
             var companyID = button.getAttribute('data-companyID');
-
+            
             // Send a POST request to the server to delete the company
             fetch('/delete_company', {
                 method: 'POST',
