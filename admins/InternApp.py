@@ -287,7 +287,7 @@ def preview_file(stud_id):
 
 @app.route("/displayComInfo", methods=['GET', 'POST'])
 def viewCompanyInfo():
-    statement = "SELECT * FROM company WHERE status = 0;"
+    statement = "SELECT com_id,com_name,com_address,com_hp,com_email FROM company WHERE status = 0;"
     cursor = db_conn.cursor()
     cursor.execute(statement)
     result = cursor.fetchall()
