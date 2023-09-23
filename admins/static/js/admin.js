@@ -43,8 +43,8 @@ registrations.forEach(function(registration) {
     };
     actionCell.appendChild(approveButton);
     
-    var rejectButton = document.createElement('button');
-    rejectButton.textContent = 'Reject';
+    var rejectButton = document.getElementById('Reject');
+    //rejectButton.textContent = 'Reject';
 
     rejectButton.onclick = function() {
         // Send a POST request to the server to delete the company
