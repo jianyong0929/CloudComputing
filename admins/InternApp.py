@@ -179,6 +179,8 @@ def displayStudentResume(stud_id):
         
     return render_template('display_studInfo.html')
 
+
+
 # @app.route("/", methods=['GET', 'POST'])
 # def home():
 #     return render_template('AddEmp.html')
@@ -290,9 +292,23 @@ def viewCompanyInfo():
     cursor.execute(statement)
     result = cursor.fetchall()
     cursor.close()
-    
     return render_template('admin.html', data=result)
 
+@app.route('/delete_company', methods=['POST'])
+def delete_company():
+
+    company_id = request.form.get('company_id')  # Get the company ID from the POST request
+    statement = "DELETE FROM company WHERE com_id = %s;"
+    cursor = db_conn.cursor()
+    cursor.execute(statement, (company_id,))
+    result = cursor.fetchall()
+    db_conn.commit()
+    cursor.close()
+
+    cursor.execute('SELECT * FROM company')
+    rows = cursor.fetchall()
+    cursor.close()
+    return render_template('admin.html', data=rows)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
