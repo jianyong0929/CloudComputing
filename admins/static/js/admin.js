@@ -47,11 +47,26 @@ registrations.forEach(function(registration) {
     rejectButton.textContent = 'Reject';
 
     rejectButton.onclick = function() {
-        // Add your rejection logic here
-        alert('Rejected ' + registration.companyName);
-        
-        // Remove the row from the table
-        row.parentNode.removeChild(row);
+        // Send a POST request to the server to delete the company
+        fetch('/delete_company', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'company_id=' + registration.companyID,
+        })
+        .then(function(response) {
+            if (response.ok) {
+                // Add your approval logic here
+                alert('Rejected ' + registration.companyName);
+            } else {
+                // Handle errors or display an error message
+                console.error('Error deleting company');
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+        });
     };
     
     actionCell.appendChild(rejectButton);
