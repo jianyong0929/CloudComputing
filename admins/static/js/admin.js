@@ -1,4 +1,13 @@
-fetch('/delete_company', {
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.reject').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
+            // Retrieve the 'company_id' from the data attribute
+            var companyID = button.getAttribute('data-companyID');
+            
+            // Send a POST request to the server to delete the company
+           fetch('/delete_company', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -19,4 +28,7 @@ fetch('/delete_company', {
 })
 .catch(function(error) {
     console.error('Fetch Error:', error);
+});
+        });
+    });
 });
