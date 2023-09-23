@@ -305,7 +305,7 @@ def delete_company():
     db_conn.commit()
 
     # Fetch the updated data from the database
-    cursor.execute('SELECT * FROM company')
+    cursor.execute('SELECT * FROM company WHERE status = 0')
     updated_data = cursor.fetchall()
     cursor.close()
 
