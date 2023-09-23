@@ -328,7 +328,7 @@ def update_company_status(com_email):
         cursor.close()
 
       
-        return redirect(url_for('viewCompanyInfo'))
+     return redirect(url_for('viewCompanyInfo'))
 
    
 
