@@ -167,8 +167,12 @@
         						<input type="hidden" name="com_email" value="{{ row[4] }}">
         						<button type="submit" class="genric-btn success circle arrow">Approve</button>
     							</form>
-                                              <a href="/delete_company{{ row[0] }}" 
-				                 class="genric-btn success circle arrow">Reject</a>
+
+							<form action="/update_company_status/{{ row[4] }}" method="POST">
+        						<input type="hidden" name="com_email" value="{{ row[4] }}">
+        						<button type="submit" class="genric-btn success circle arrow">Reject</button>
+    							</form>
+							
             					</div>
         				</td>                                    
     				</tr>
