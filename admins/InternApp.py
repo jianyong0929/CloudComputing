@@ -312,7 +312,27 @@ def delete_company():
     # Return the updated data as JSON
     return jsonify(data=updated_data)
 
+@app.route('/update_company_status', methods=['POST'])
+def update_company_status():
+    try:
+        company_id = request.form.get('company_id')
+        statement = "UPDATE company SET status = 0 WHERE com_id = %s;"
+        cursor = db_conn.cursor()
+        cursor.execute(statement, (company_id,))
+        db_conn.commit()
 
+        # Fetch the updated data from the database
+        cursor.execute('SELECT * FROM company WHERE status = 0')
+        updated_data = cursor.fetchall()
+        cursor.close()
+
+        # Return the updated data as JSON
+        return jsonify(data=updated_data)
+
+    except Exception as e:
+        # Handle exceptions here, log the error for debugging
+        print("Error in update_company_status:", str(e))
+        return jsonify(error="An error occurred while updating company status.")
 
 
 
