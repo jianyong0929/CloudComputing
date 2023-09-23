@@ -65,9 +65,7 @@ def teampage():
 def testimonialpage():
     return render_template('testimonial.html')
 
-@app.route("/adminpage", methods=['GET', 'POST'])
-def adminpage():
-    return render_template('admin.html')
+
 
 # @app.route("/studentInfo", methods=['GET', 'POST'])
 # def studentInfo():
