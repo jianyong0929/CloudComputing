@@ -315,6 +315,7 @@ def delete_company(com_email):
 
 @app.route('/update_company_status/<com_email>', methods=['POST'])
 def update_company_status(com_email):
+
         com_email = request.form.get('com_email')
         statement = "UPDATE company SET status = 1 WHERE com_email = %s;"
         cursor = db_conn.cursor()
@@ -326,10 +327,7 @@ def update_company_status(com_email):
         cursor.execute(statement)
         updated_data = cursor.fetchall()
         cursor.close()
-
-      
-    return redirect(url_for('viewCompanyInfo'))
-
+        return redirect(url_for('viewCompanyInfo'))
    
 
 
