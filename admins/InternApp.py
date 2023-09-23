@@ -311,7 +311,7 @@ def delete_company(com_email):
     cursor.close()
 
     # Return the updated data as JSON
-     return redirect(url_for('viewCompanyInfo'))
+    return redirect(url_for('viewCompanyInfo'))
 
 @app.route('/update_company_status/<com_email>', methods=['POST'])
 def update_company_status(com_email):
@@ -328,7 +328,7 @@ def update_company_status(com_email):
         cursor.close()
 
       
-     return redirect(url_for('viewCompanyInfo'))
+    return redirect(url_for('viewCompanyInfo'))
 
    
 
