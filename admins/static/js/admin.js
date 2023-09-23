@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(function(response) {
                 if (response.ok) {
                     // Company approved successfully, now update the table
+                    console.log('Approve Company ID:', companyID);
                     return response.json(); // Parse the JSON response
                 } else {
                     // Handle errors or display an error message
