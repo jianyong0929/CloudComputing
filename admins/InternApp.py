@@ -329,7 +329,7 @@ def update_company_status(com_id):
         cursor.close()
 
         # Return the updated data as JSON
-        return jsonify(data=updated_data)
+        return redirect(url_for('display_com_info'))
 
     except Exception as e:
         # Handle exceptions here, log the error for debugging
