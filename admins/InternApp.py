@@ -294,19 +294,24 @@ def viewCompanyInfo():
     cursor.close()
     return render_template('admin.html', data=result)
 
+
+
 @app.route('/delete_company', methods=['POST'])
 def delete_company():
-
-    company_id = request.form.get('company_id')  # Get the company ID from the POST request
+    company_id = request.form.get('company_id')
     statement = "DELETE FROM company WHERE com_id = %s;"
     cursor = db_conn.cursor()
     cursor.execute(statement, (company_id,))
     db_conn.commit()
 
+    # Fetch the updated data from the database
     cursor.execute('SELECT * FROM company')
-    rows = cursor.fetchall()
+    updated_data = cursor.fetchall()
     cursor.close()
-    return render_template('admin.html', data=rows)
+
+    # Return the updated data as JSON
+    return jsonify(data=updated_data)
+
 
 
 
