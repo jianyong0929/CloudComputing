@@ -316,7 +316,7 @@ def delete_company(com_id):
 @app.route('/update_company_status/<com_id>', methods=['POST'])
 def update_company_status(com_id):
     try:
-        # company_id = request.form.get('company_id')
+        com_id = request.form.get('com_id')
         statement = "UPDATE company SET status = 1 WHERE com_id = %s;"
         cursor = db_conn.cursor()
         cursor.execute(statement, (com_id,))
