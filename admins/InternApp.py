@@ -31,7 +31,7 @@ table = 'Student'
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('admin_home.html')
 
 @app.route("/homepage", methods=['GET', 'POST'])
 def homepage():
