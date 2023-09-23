@@ -313,13 +313,13 @@ def delete_company(com_id):
     # Return the updated data as JSON
     return jsonify(data=updated_data)
 
-@app.route('/update_company_status/<com_id>', methods=['POST'])
-def update_company_status(com_id):
+@app.route('/update_company_status/<com_email>', methods=['POST'])
+def update_company_status(com_email):
     try:
-        com_id = request.form.get('com_id')
-        statement = "UPDATE company SET status = 1 WHERE com_id = %s;"
+        com_id = request.form.get('com_email')
+        statement = "UPDATE company SET status = 1 WHERE com_email = %s;"
         cursor = db_conn.cursor()
-        cursor.execute(statement, (com_id,))
+        cursor.execute(statement, (com_email,))
         db_conn.commit()
 
         # Fetch the updated data from the database
