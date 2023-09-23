@@ -303,12 +303,12 @@ def delete_company():
     cursor.execute(statement, (company_id,))
     result = cursor.fetchall()
     db_conn.commit()
-    cursor.close()
 
     cursor.execute('SELECT * FROM company')
     rows = cursor.fetchall()
     cursor.close()
     return render_template('admin.html', data=rows)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
