@@ -296,12 +296,12 @@ def viewCompanyInfo():
 
 
 
-@app.route('/delete_company/<com_id>', methods=['POST'])
-def delete_company(com_id):
-    # company_id = request.form.get('company_id')
-    statement = "DELETE FROM company WHERE com_id = %s;"
+@app.route('/delete_company/<com_email>', methods=['POST'])
+def delete_company(com_email):
+    company_email = request.form.get('com_email')
+    statement = "DELETE FROM company WHERE com_email = %s;"
     cursor = db_conn.cursor()
-    cursor.execute(statement, (com_id,))
+    cursor.execute(statement, (com_email,))
     db_conn.commit()
 
     # Fetch the updated data from the database
@@ -311,11 +311,11 @@ def delete_company(com_id):
     cursor.close()
 
     # Return the updated data as JSON
-    return jsonify(data=updated_data)
+     return redirect(url_for('viewCompanyInfo'))
 
 @app.route('/update_company_status/<com_email>', methods=['POST'])
 def update_company_status(com_email):
-        com_id = request.form.get('com_email')
+        com_email = request.form.get('com_email')
         statement = "UPDATE company SET status = 1 WHERE com_email = %s;"
         cursor = db_conn.cursor()
         cursor.execute(statement, (com_email,))
