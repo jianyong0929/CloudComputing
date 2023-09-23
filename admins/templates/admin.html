@@ -156,14 +156,14 @@
                     <tbody>
                        {% for row in data %}
     				<tr>
-        			<th scope="row" class="scope" data-companyID="{{ row[0] }}>{{ row[0] }}</th>
+        			<th scope="row" class="scope" >{{ row[0] }}</th>
         				<td>{{ row[1] }}</td>
        					<td>{{ row[2] }}</td>
         				<td>{{ row[3] }}</td>
         				<td>{{ row[4] }}</td>
         				<td>
             					<div class="button-group-area mt-10">
-                					<button class="genric-btn success circle arrow" id="Approve">Approve</button>
+                					<button class="genric-btn success circle arrow" id="Approve" data-companyID="{{ row[0] }}>Approve</button>
                 					<button class="genric-btn success circle arrow reject" data-companyID="{{ row[0] }}">Reject</button>
             					</div>
         				</td>                                    
