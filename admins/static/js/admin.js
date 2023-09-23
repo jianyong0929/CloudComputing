@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    console.log('DOMContentLoaded event is firing.');
     document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.approve').forEach(function(button) {
         button.addEventListener('click', function(e) {
