@@ -35,6 +35,46 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.approve').forEach(function(button) {
+        button.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+            
+            // Retrieve the 'company_id' from the data attribute
+            var companyID = button.getAttribute('data-companyID');
+            
+            // Send a POST request to the server to update the company status
+            fetch('/update_company_status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'company_id=' + companyID, // Include the company ID in the request
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    // Company approved successfully, now update the table
+                    return response.json(); // Parse the JSON response
+                } else {
+                    // Handle errors or display an error message
+                    console.error('Error approving company. Status:', response.status);
+                    response.text().then(function(errorMessage) {
+                        console.error('Error Message:', errorMessage);
+                    });
+                }
+            })
+            .then(function(data) {
+                // Update the table with the new data
+                renderTable(data);
+            })
+            .catch(function(error) {
+                console.error('Fetch Error:', error);
+            });
+        });
+    });
+});
+
     
     function renderTable(data) {
     // Assuming you have a table element with ID 'companyTable'
