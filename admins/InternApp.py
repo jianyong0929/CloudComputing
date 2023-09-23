@@ -296,33 +296,35 @@ def viewCompanyInfo():
 
 
 
-@app.route('/delete_company', methods=['POST'])
-def delete_company():
-    company_id = request.form.get('company_id')
+@app.route('/delete_company/<com_id>', methods=['POST'])
+def delete_company(com_id):
+    # company_id = request.form.get('company_id')
     statement = "DELETE FROM company WHERE com_id = %s;"
     cursor = db_conn.cursor()
-    cursor.execute(statement, (company_id,))
+    cursor.execute(statement, (com_id,))
     db_conn.commit()
 
     # Fetch the updated data from the database
-    cursor.execute('SELECT * FROM company WHERE status = 0')
+    statement = "SELECT * FROM company WHERE status = 0"
+    cursor.execute(statement)
     updated_data = cursor.fetchall()
     cursor.close()
 
     # Return the updated data as JSON
     return jsonify(data=updated_data)
 
-@app.route('/update_company_status', methods=['POST'])
-def update_company_status():
+@app.route('/update_company_status/<com_id>', methods=['POST'])
+def update_company_status(com_id):
     try:
-        company_id = request.form.get('company_id')
+        # company_id = request.form.get('company_id')
         statement = "UPDATE company SET status = 1 WHERE com_id = %s;"
         cursor = db_conn.cursor()
-        cursor.execute(statement, (company_id,))
+        cursor.execute(statement, (com_id,))
         db_conn.commit()
 
         # Fetch the updated data from the database
-        cursor.execute('SELECT * FROM company WHERE status = 0')
+        statement = "SELECT * FROM company WHERE status = 0"
+        cursor.execute(statement)
         updated_data = cursor.fetchall()
         cursor.close()
 
@@ -333,7 +335,6 @@ def update_company_status():
         # Handle exceptions here, log the error for debugging
         print("Error in update_company_status:", str(e))
         return jsonify(error="An error occurred while updating company status.")
-
 
 
 if __name__ == '__main__':
